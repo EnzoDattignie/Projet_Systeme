@@ -18,13 +18,17 @@ def is_number(s):
     return res
 
 
-
+intensite = ()
+longueur = ()
 
 fd = open("Spectre_photoluminescence.txt","r")
 for ligne in fd :
     x = ligne.strip().split()
     #On vérifie bien que deux nombres sont fournis et que les deux sont des nombres
     if (len(x) == 2 and is_number(x[0]) and is_number(x[1])):
-        print (x[0])
+        longueur.append(x[0])
+        intensite.append(x[1])
 fd.close()
-print("travail terminé")
+
+print(longueur)
+print(intensite)
