@@ -1,11 +1,24 @@
 
 #Fonction retournant True si le string donné peut etre converti en float
 def is_number(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
+    fpoint = False
+    res = True
+    i = 0
+    if (len(s)==0):
+        res = False
+    if (s[0].isdigit() == False) :
+        res = False
+    while ((i < len(s)) and (res == True)) :
+        if (s[i].isdigit() == False):
+            if (s[i] == "." and fpoint == False):
+                fpoint = True
+            else :
+                res = False
+        i = i+1
+    return res
+
+
+
 
 fd = open("Spectre_photoluminescence.txt","r")
 for ligne in fd :
