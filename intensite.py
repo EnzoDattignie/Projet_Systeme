@@ -49,19 +49,32 @@ def maximum(l) :
 
 def file_here(path):
     presence = False
+    pflag = True
+    i = 0
     if (path[0] == "/" or path[0] == "."):#On est face a un chemin absolu ou relatif
         path = path.split("/")
         file = path[len(path)-1]
         dir = ""
-        for i in range (0, len(path)-1):
+        while (i < len(path)-1 and pflag == True):
             dir = dir+path[i]+"/"
-        fichiers = os.listdir(dir)
+            fichier = os.listdir(dir)
+            flag = False
+            for f in fichier :
+                if f == path[i+1]:
+                    flag = True
+            if flag == False :
+                print ("Error {} directory not present in {}".format(path[i+1],dir))
+                pflag = False
+            i = i+1
+        if pflag == True:
+            fichiers = os.listdir(dir)
     else : #On est dans le cas d'un nom de fichier
         fichiers = os.listdir("./")
         file = path
-    for f in fichiers : #vérification que le fichier existe bien a l'endroit indiqué
-        if (f == file) :
-            presence = True
+    if pflag == True:
+        for f in fichiers : #vérification que le fichier existe bien a l'endroit indiqué
+            if (f == file) :
+                presence = True
     return presence,file
 
 if (len(sys.argv) > 1) : #On verifie qu'un argument est donné, sinon on ne peut pas ouvrir le fichier
