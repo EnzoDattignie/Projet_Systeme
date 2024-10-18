@@ -47,9 +47,10 @@ def maximum(l) :
             index = i
     return index
 
+#Programme vérifiant que le chemin fourni mene bien a un fichier existant qui prend en compte tout type de chemin
 def file_here(path):
     presence = False
-    if (path[0] == "/" or path[0] == "."):#On est face a un chemin absolu ou relatif
+    if (path[0] == "/" or path[0] == "." or path[0] == "~"):#On est face a un chemin absolu ou relatif
         path = path.split("/")
         file = path[len(path)-1]
         dir = ""
