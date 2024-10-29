@@ -98,4 +98,4 @@ else :
     print("No file indicated, please add a file as an argument")
 
 
-#creation d'un dictionnaire pour differentes palges de longueur d'onde
+#creation d'un dictionnaire pour differentes plages de longueurs d'ondes
