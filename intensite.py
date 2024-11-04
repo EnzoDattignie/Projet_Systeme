@@ -101,7 +101,7 @@ if (len(sys.argv) > 1) : #On verifie qu'un argument est donné, sinon on ne peut
                 longueur = float(x[0])
                 intensite = float(x[1])
                 #On sélectionne la clef sous la forme [limite_basse-Limite_haute[ et ensuite on initialise la liste des intensités si elle n'existe pas, on append si elle existe
-                key = str((((longueur//fenetre)*fenetre) +((longueur//(fenetre+1)*fenetre)))/2)
+                key = str(((longueur//fenetre)*fenetre + ((longueur//fenetre+1)*fenetre))/2)
                 if key in dict.keys() :
                     dict[key].append(intensite)
                 else :
