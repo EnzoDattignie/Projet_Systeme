@@ -1,7 +1,6 @@
 import sys
 from functions import *
 dict = {}
-print(sys.argv)
 
 fenetre = 10
 
