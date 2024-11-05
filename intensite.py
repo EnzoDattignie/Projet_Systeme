@@ -16,10 +16,4 @@ else :
     print("No file indicated, please add a file as an argument")
 
 #Retour de toutes les données demandées
-for key in dict :
-    dict[key] = sort_list(dict[key])
-    print ("Clef : \"{}\"".format(key))
-    print ("Nb de données : {}".format(len(dict[key])))
-    print ("Min : {}".format(minimum(dict[key])))
-    print ("Max : {}".format(maximum(dict[key])))
-    print ("Moyenne : {}".format(average(dict[key])))
+print(dict)

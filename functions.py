@@ -1,29 +1,18 @@
 import sys, os
+import re
 
 dict = {}
 
 #Fonction retournant True si le string donné peut etre converti en float
-def is_number(s) :
-    fpoint = False #Ce flag vérifie que le point est passé ou non, il est set a True si il voit un point et si il voit de nouveau un point le résultat final est false, un float ne possede qu'un seul point
-    res = True
-    i = 1
-    if (len(s)==0):
-        res = False
-    else :
-        #un string peut etre converti en float si il commence par un chiffre, un moins, ou un point
-        if s[0].isdigit() or s[0] == "-" or s[0] == "." :
-            if s[0] == ".":
-                fpoint = True
-            while ((i < len(s)) and (res == True)) :
-                if (s[i].isdigit() == False):
-                    if (s[i] == "." and fpoint == False):
-                        fpoint = True
-                    else :
-                        res = False
-                i = i+1
-        else :
-            res = False
-    return res
+def is_number(s):
+    flag = False
+    res = re.search("(^[-]{0,1}[0-9]*[.]{0,1}[0-9]+$)",s)
+    if res :
+        flag = True
+    res = re.search("(^[-]{0,1}[0-9]+[.]{0,1}[0-9]*$)",s)
+    if res :
+        flag = True
+    return flag
 
 
 #Programme retournant l'index de la valeur minimale d'une liste
