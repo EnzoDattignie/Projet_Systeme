@@ -7,6 +7,7 @@ if (len(sys.argv) > 1) : #On verifie qu'un argument est donné, sinon on ne peut
     longueur,intensite = list_creation(sys.argv[1])
 else :
     print("No file indicated, please add a file as an argument")
+    
 inf=input("Veuillez saisir la première valeur de longueur d'onde de l'intervalle ")
 sup=input("Veuillez saisir la seconde valeur de longueur d'onde de l'intervalle ")
 
