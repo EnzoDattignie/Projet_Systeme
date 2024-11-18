@@ -83,7 +83,7 @@ def dict_creation (path,fenetre):
                 longueur = float(x[0])
                 intensite = float(x[1])
                 #On sélectionne la clef sous la forme [limite_basse-Limite_haute[ et ensuite on initialise la liste des intensités si elle n'existe pas, on append si elle existe
-                key = "["+str((longueur//fenetre)*fenetre) +"-" +str((longueur//fenetre+1)*fenetre)+"["
+                key = ((longueur//fenetre)+0.5)*fenetre
                 if key in dict.keys() :
                     dict[key].append(intensite)
                 else :

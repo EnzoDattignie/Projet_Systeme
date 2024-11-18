@@ -1,6 +1,7 @@
 import sys
 from functions import *
 dict = {}
+print(sys.argv)
 
 fenetre = 10
 
@@ -11,7 +12,7 @@ if len(sys.argv) > 2:
         print("Error, window set to 10nm automatically")
 
 if (len(sys.argv) > 1) : #On verifie qu'un argument est donné, sinon on ne peut pas ouvrir le fichier
-    dict = dict_creation(sys.argv[1],fenetre)
+    dict = dict_creation(sys.argv[1].strip(),fenetre)
 else :
     print("No file indicated, please add a file as an argument")
 
@@ -23,3 +24,4 @@ for key in dict :
     print ("Min : {}".format(dict[key][minimum(dict[key])]))
     print ("Max : {}".format(dict[key][maximum(dict[key])]))
     print ("Moyenne : {}".format(average(dict[key])))
+    print ()
