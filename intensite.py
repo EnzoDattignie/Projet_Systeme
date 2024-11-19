@@ -1,15 +1,14 @@
 import sys
 from functions import *
 dict = {}
-print(sys.argv)
+
 
 fenetre = 10
-
 if len(sys.argv) > 2:
     if is_number(sys.argv[2].strip()) :
         fenetre = float(sys.argv[2])
     else :
-        print("Error, window set to 10nm automatically")
+        print("Erreur, fenetre paramétrée a 10nm")
 
 if (len(sys.argv) > 1) : #On verifie qu'un argument est donné, sinon on ne peut pas ouvrir le fichier
     dict = dict_creation(sys.argv[1].strip(),fenetre)
