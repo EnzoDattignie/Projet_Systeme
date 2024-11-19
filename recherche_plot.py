@@ -8,8 +8,8 @@ if (len(sys.argv) > 1) : #On verifie qu'un argument est donné, sinon on ne peut
 else :
     print("No file indicated, please add a file as an argument")
     
-inf=input("Veuillez saisir la première valeur de longueur d'onde de l'intervalle ")
-sup=input("Veuillez saisir la seconde valeur de longueur d'onde de l'intervalle ")
+inf=input("Veuillez saisir la première valeur de longueur d'onde en nanomètre de l'intervalle ")
+sup=input("Veuillez saisir la seconde valeur de longueur d'onde en nanomètre de l'intervalle ")
 
 def fenetre():             #pas utile au final
     if not is_number(inf) and not is_number(sup):
