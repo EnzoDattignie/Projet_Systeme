@@ -35,17 +35,26 @@ else:
 #Ces listes seront les listes réelles entre les deux valeurs de longueur d'onde indiquées par l'utilisateur
 longueurf=[] 
 intensitef=[]
-Imax=intensite[maximum(intensite)]
 for i in range(len(longueur)):  #Creation d'une liste de longueurs d'onde et d'intensités correspondant à l'intervalle demandé
     if inf_ <= longueur[i] <=sup_:        
         longueurf.append(longueur[i])
-        intensitef.append(intensite[i]/Imax) #Normalisation de l'intensité
+        intensitef.append(intensite[i])
 
+#Normalisation de l'intensité
 
+Imax=intensite[maximum(intensite)]
+intensitef_normalisé=[]
+for i in range(len(intensitef)):
+    intensitef_normalisé.append(intensitef[i]/Imax)
 
     
-plt.plot(longueurf,intensitef,label='I(λ)',color='red')
+plt.plot(longueurf,intensitef_normalisé,label='I(λ)',color='red')
+plt.ylim(-0.10,1.10)
 plt.legend()
+plt.xlabel("Longueur d'onde (λ)")
+plt.ylabel("Intensité (I)")
+plt.title("Graphique représentant l'intensité en fonction de la longueur d'onde")
+
 if len(longueurf)>0: #On verifie que les listes sont remplies avant de plot
     plt.show()
 else:
