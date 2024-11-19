@@ -5,15 +5,7 @@ import matplotlib.pyplot as plt
 longueur = []
 intensite = []
 
-<<<<<<< HEAD
-if (len(sys.argv) > 1) : #On verifie qu'un argument est donné, sinon on ne peut pas ouvrir le fichier
-    longueur,intensite = list_creation(sys.argv[1])
-else :
-    print("No file indicated, please add a file as an argument")
-    
-inf=input("Veuillez saisir la première valeur de longueur d'onde en nanomètre de l'intervalle ")
-sup=input("Veuillez saisir la seconde valeur de longueur d'onde en nanomètre de l'intervalle ")
-=======
+
 for line in sys.stdin :
     l = line.split()
     if len(l) >= 3 :
@@ -23,7 +15,6 @@ for line in sys.stdin :
         if l[0] == 'Moyenne':
             intensite.append(float(l[2].strip()))
             print('\n')
->>>>>>> 738ebe286c371617c234400b2a8271a879ebd34b
 
 inf = 'null'
 sup = 'null'
