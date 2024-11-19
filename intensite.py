@@ -4,7 +4,7 @@ dict = {}
 
 
 fenetre = 10
-if len(sys.argv) > 2:
+if len(sys.argv) > 2: #On verifie qu'une fenetre est bien donnée et que c'est bien un nombre, sinon on la laisse a 10
     if is_number(sys.argv[2].strip()) :
         fenetre = float(sys.argv[2])
     else :
