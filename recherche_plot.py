@@ -29,8 +29,13 @@ if is_number(inf) and is_number(sup): #Si ce sont des nombres on les converti en
         sup_,inf_=inf_,sup_
 else:
     print('Les valeurs rentréées ne sont pas correctes ou inexistantes, plot sur toute la longueur de l\'echantillon')
-    inf_ = longueur[minimum(longueur)]
-    sup_ = longueur[maximum(longueur)]
+    if (len(longueur) > 0) : #Evite juste une erreur si l'échantillon est vide
+        inf_ = longueur[minimum(longueur)]
+        sup_ = longueur[maximum(longueur)]
+    else :
+        inf_ = 0
+        sup_ = 0
+
 
 #Ces listes seront les listes réelles entre les deux valeurs de longueur d'onde indiquées par l'utilisateur
 longueurf=[] 
@@ -42,7 +47,10 @@ for i in range(len(longueur)):  #Creation d'une liste de longueurs d'onde et d'i
 
 #Normalisation de l'intensité
 
-Imax=intensite[maximum(intensite)]
+if len(intensite) > 0 :
+    Imax=intensite[maximum(intensite)]
+else :
+    Imax = 0
 intensitef_normalisé=[]
 for i in range(len(intensitef)):
     intensitef_normalisé.append(intensitef[i]/Imax)
