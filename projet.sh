@@ -1,7 +1,6 @@
 echo "Arguments :" $@
-test=$(echo $0 | grep -Po '.*(?=projet.sh)')
 echo "Veuiller indiquer la longueur d'onde minimale de la fenetre"
 read t1
 echo "Veuiller indiquer la longueur d'onde maximale de la fenetre"
 read t2
-python3 $test'intensite.py' $@ | python3 $test'recherche_plot.py' $t1 $t2
+python3 'intensite.py' $@ | python3 'recherche_plot.py' $t1 $t2
