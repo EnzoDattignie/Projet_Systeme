@@ -1,6 +1,7 @@
 import sys
 from functions import *
 import matplotlib.pyplot as plt
+import datetime
 
 longueur = []
 intensite = []
@@ -38,7 +39,6 @@ else:
         inf_ = 0
         sup_ = 0
 
-
 #Ces listes seront les listes réelles entre les deux valeurs de longueur d'onde indiquées par l'utilisateur
 longueurf=[] 
 intensitef=[]
@@ -57,7 +57,7 @@ intensitef_normalisé=[]
 for i in range(len(intensitef)):
     intensitef_normalisé.append(intensitef[i]/Imax)
 
-    
+filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 plt.plot(longueurf,intensitef_normalisé,label='I(λ)',color='red')
 plt.ylim(-0.10,1.10)
 plt.legend()
@@ -66,7 +66,11 @@ plt.ylabel("Intensité (I)")
 plt.title("Graphique représentant l'intensité en fonction de la longueur d'onde")
 
 if len(longueurf)>0: #On verifie que les listes sont remplies avant de plot
+    if sys.argv[3] == 'y':
+        filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        plt.savefig(filename)
     plt.show()
 else:
     print('Aucune données à afficher sur cet intervalle')
+
     
