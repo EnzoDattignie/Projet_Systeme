@@ -91,3 +91,11 @@ def dict_creation (path,fenetre):
                     dict[key] = [intensite]
         fd.close()
     return dict
+
+def is_corrupted(fichier)
+    fd=open(fichier,'r')
+    l=fd.readlines()
+    result=false
+    if (len(l)>=0)
+        result=true
+
