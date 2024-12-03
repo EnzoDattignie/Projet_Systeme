@@ -1,22 +1,13 @@
 # Projet_Systeme
+This programm was realised for the Module HAI727I in Faculté des Sciences of Montpellier
 
-Ce programme a été réalisé dans le cadre de l'UE HAI727I de la faculté des sciences de Montpellier.
+To install this program you only need to clone the git in the repository of your choice and verify that your installation of pythons have the following libraries installed : sys, os, re, matplotlib.
 
-Pour executer ce programme, exécuter dans la cmd "./projet.sh filepath fenetre" par exemple  "./projet.sh Spectre_photoluminescence.txt 7"
+To execute for the first time you first need to open the cmd in your repository and type "chmod 555 ./projet.sh" then for any execution you only need to type "./project.sh filepath window" with filepath being the path to the file you want to analyse and window being the precision you want to exploit your data in nanometers, it is initially set to 10, for exemple "./project.sh Spectre_photoluminescence.txt 7".
 
-Notre programme a pour but de lire un fichier de sortie d'un spectrometre avec comme valeur la longueur d'onde et l'intensité séparés par un espace et un saut de ligne entre chaque entrée. 
+Our program was made to read an outpuut file of a specrometer with wavelength and intensity separated by a space and data separated by a line break between each input. 
 
-Les bibliothèques à importer sont sys,os,re,matplotlib.
-La taille de la fenetre initiale est de 10 nm.
+This program is composed of 4 main files. A bash script "projet.sh" gathering from the user the filepath, the window and the minimum and maximum wavelength to graph on. And 3 python scripts, function.py containing useful functions for other scripts, intensite.py reading the data from the file and storing each intensity to it's own wavelength window named by the center of the window and then passing it through the stdin to the script recherche_plot.py printing result and graphing it in the given range of intensity.   
 
-Ce programme est composé de 4 fichiers. 
-Un script bash projet.sh demandant a l'utilisateur le chemin, la fenetre et les valeurs sur lesquelles faire un graphique
-Un script fonction.py contenant des fonctions necessitant un appel de la part des autres programmes.
-Un script intensité.py lisant les informations dans le fichier texte fourni et les organisant dans un dictionnaire dont les clefs sont les longueur d'onde au centre des fenetres.
-Un script recherche_plot.py lisant les informations transmises par intensite.py et réalisant une liste a l'aide des clefs et des moyennes d'intensité et affichant sur les longueurs d'ondes demandées  
-
-Nos Choix:
-Premierement nous avons fait le choix de réaliser le script fonctions dont l'unique but est de stocker nos fonctions usuelle tels que le minimum ou le maximum qui peut etre utilisé par plusieurs scripts.
-Nous avons également choisi d'utiliser le stdin pour pipe un script a l'autre pour éviter la création d'un fichier texte temporaire ou la lecture indépendante du meme fichier deux fois. 
-Ce choix nous a limité dans la maniere de prendre en compte le input la fonction input de python essayant de lire le standard input nous avons donc a la place demandé les arguments depuis le script bash et donné en argument au programme.
-Nous avons décidé de normaliser le graphique pour que sa valeur max vaille 1 ainsi nous pouvons plus aisément comparer différents résultats enttre eux sachant que l'unité d'intensité lue par un spectrometre est rarement indiquée ni importantes
+Choices :
+First we made the choice to realise the additionnal script function to have a cleaner project and store the common functions like minimum or maximum used by both scripts. We also chose the stdin to pipe a script to another to avoid the creation of an external txt file. This choice limited us in the way to take the input into acount as we could not ask the user in the python script anymore so we used project.sh to take all the inputs. We also decided to normalise the graph so iit's maximum value is equal to one, this way we can easily compare multiple graphs even from different spectrometers knowing that a spectrometer's intensity read is rarely in SI unit and depends huighly in experimental conditions.  
