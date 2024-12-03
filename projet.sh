@@ -1,7 +1,3 @@
-
-while []
-do
-
 echo "Arguments :" $@
 echo "Veuiller indiquer la longueur d'onde minimale de la fenetre"
 read t1
