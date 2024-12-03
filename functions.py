@@ -92,10 +92,30 @@ def dict_creation (path,fenetre):
         fd.close()
     return dict
 
-def is_corrupted(fichier)
-    fd=open(fichier,'r')
-    l=fd.readlines()
-    result=false
-    if (len(l)>=0)
-        result=true
-
+def is_corrupted(path,fichier):
+    result= False
+    presence = file_here(path)
+    if presence[0]== False :
+        print("Aucun fichier nommé \"{}\" trouvé".format(presence[1]))
+        result = True        
+    else :
+        with open(fichier,'r') as fd:
+            lignes=fd.readlines()
+            #print(lignes)
+            if len(lignes)==0:    #Si le fichier n'est pas vide
+                print("Le fichier est vide")
+                result= True
+            else:
+                taille_col1=0
+                taille_col2=0
+                for ligne in lignes:
+                    valeurs=ligne.strip().split()
+                    if is_number(valeurs[0]) and is_number(valeurs[1]):
+                        #print(valeurs)
+                        if len(valeurs)>=1:
+                            taille_col1+=1
+                        if len(valeurs)>=2:
+                            taille_col2+=1
+                    if taille_col1!=taille_col2:     #Si les 2 listes de données n'ont pas la même taille
+                        result=True
+    return result
