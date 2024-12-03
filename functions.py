@@ -73,7 +73,7 @@ def dict_creation (path,fenetre):
     dict = {}
     presence = file_here(path)
     if presence[0] == False :
-        print("No file named \"{}\" found".format(presence[1]))
+        print("Aucun fichier nommé \"{}\" trouvé".format(presence[1]))
     else :
         fd = open(path,"r")
         for ligne in fd :
@@ -82,7 +82,8 @@ def dict_creation (path,fenetre):
             if (len(x) == 2 and is_number(x[0]) and is_number(x[1])):
                 longueur = float(x[0])
                 intensite = float(x[1])
-                #On sélectionne la clef sous la forme [limite_basse-Limite_haute[ et ensuite on initialise la liste des intensités si elle n'existe pas, on append si elle existe
+                #On sélectionne comme clef le milieu de la fenetre en mettant dans la meme clef du dictionnaire toutes les longueurs pour lesquelles la division entiere est égale
+                #on prend ensuite ce résultat qu'on multiplie par la fenetre et on rajoute une demie fenetre pour que la  clef représente bien le centre de notre fenetre
                 key = ((longueur//fenetre)+0.5)*fenetre
                 if key in dict.keys() :
                     dict[key].append(intensite)
@@ -90,20 +91,3 @@ def dict_creation (path,fenetre):
                     dict[key] = [intensite]
         fd.close()
     return dict
-
-def list_creation (path):
-    longueur = []
-    intensite = []
-    presence = file_here(path)
-    if presence[0] == False :
-        print("No file named \"{}\" found".format(presence[1]))
-    else :
-        fd = open(path,"r")
-        for ligne in fd :
-            x = ligne.strip().split()
-            #On vérifie bien que deux nombres sont fournis et que les deux sont des nombres
-            if (len(x) == 2 and is_number(x[0]) and is_number(x[1])):
-                longueur.append(float(x[0]))
-                intensite.append(float(x[1]))
-        fd.close()
-    return longueur,intensite

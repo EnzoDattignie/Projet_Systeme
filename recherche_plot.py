@@ -8,8 +8,8 @@ intensite = []
 for line in sys.stdin : #Nous lisons le stdin ligne par ligne pour récuperer les données pipe par intensite.py
     l = line.split()
     if len(l) >= 3 :
-        print (line.strip()) #On affiche les lignes rendues invisibles par le pipe et on garde en longueur d'onde la clef et en intensité la valeur moyenne sur la fenetre
-        if l[0] == 'Clef':
+        print (line.strip()) #On affiche les lignes rendues invisibles ppar le pipe et on garde en longueur d'onde la clef et en intensité la valeur moyenne sur la fenetre
+        if l[0] == "Longueur":
             longueur.append(float(l[2].strip('"')))
         if l[0] == 'Moyenne':
             intensite.append(float(l[2].strip()))
@@ -17,6 +17,8 @@ for line in sys.stdin : #Nous lisons le stdin ligne par ligne pour récuperer le
 
 inf = 'null'
 sup = 'null'
+
+
 
 if len(sys.argv) >= 3 : #On récupere les longueurs d'ondes min et max voulues fournies par l'utilisateur depuis projet.sh
     inf = sys.argv[1].strip() 
