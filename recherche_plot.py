@@ -68,6 +68,9 @@ plt.title("Graphique représentant l'intensité en fonction de la longueur d'ond
 if len(longueurf)>0: #On verifie que les listes sont remplies avant de plot
     if sys.argv[3] == 'y':
         filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        with open(filename+"_save.txt",'w') as save :
+            for i in range (0,len(intensitef_normalisé)) :
+                save.write("{}\t{}\n".format(longueurf[i],intensitef_normalisé[i]))
         plt.savefig(filename)
     plt.show()
 else:

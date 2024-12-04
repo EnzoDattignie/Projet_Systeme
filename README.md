@@ -1,7 +1,7 @@
 # Projet_Systeme
 This programm was realised for the Module HAI727I at the Faculty of Science of Montpellier University.
 
-To install this program you only need to clone the git in the repository of your choice and check if your installation of pythons have the following libraries installed : sys, os, re, matplotlib.
+To install this program you only need to clone the git in the repository of your choice and check if your installation of pythons have the following libraries installed : sys, os, re, matplotlib, datetime.
 
 The first time you execute the programm you need to open the cmd in the right repository and type "chmod 555 ./projet.sh" then for any execution you only need to type "./project.sh filepath window" with filepath being the path to the file you want to analyse and window being the precision you want to exploit your data in nanometers, it is initially set to 10 nm. 
 Here is an exemple of a typical command : "./project.sh Spectre_photoluminescence.txt 7".
