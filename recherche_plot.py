@@ -3,27 +3,31 @@ from functions import *
 import matplotlib.pyplot as plt
 import datetime
 
+print(sys.argv)
+
 longueur = []
 intensite = []
 
-for line in sys.stdin : #Nous lisons le stdin ligne par ligne pour récuperer les données pipe par intensite.py
-    l = line.split()
-    if len(l) >= 3 :
-        print (line.strip()) #On affiche les lignes rendues invisibles ppar le pipe et on garde en longueur d'onde la clef et en intensité la valeur moyenne sur la fenetre
-        if l[0] == "Longueur":
-            longueur.append(float(l[2].strip('"')))
-        if l[0] == 'Moyenne':
-            intensite.append(float(l[2].strip()))
-            print('\n')
+if sys.argv[4] == "n" :
+    for line in sys.stdin : #Nous lisons le stdin ligne par ligne pour récuperer les données pipe par intensite.py
+        l = line.split()
+        if len(l) >= 3 :
+            print (line.strip()) #On affiche les lignes rendues invisibles ppar le pipe et on garde en longueur d'onde la clef et en intensité la valeur moyenne sur la fenetre
+            if l[0] == "Longueur":
+                longueur.append(float(l[2].strip('"')))
+            if l[0] == 'Moyenne':
+                intensite.append(float(l[2].strip()))
+                print('\n')
+else :
+    with open("temp.txt","r") as temp:
+        for l in temp :
+            line = l.split()
+            print(line)
+            longueur.append(float(line[0]))
+            intensite.append(float(line[1]))
 
-inf = 'null'
-sup = 'null'
-
-
-
-if len(sys.argv) >= 3 : #On récupere les longueurs d'ondes min et max voulues fournies par l'utilisateur depuis projet.sh
-    inf = sys.argv[1].strip() 
-    sup = sys.argv[2].strip()
+inf = sys.argv[1].strip() 
+sup = sys.argv[2].strip()
 
 if is_number(inf) and is_number(sup): #Si ce sont des nombres on les converti en float sinon on prend le min et le max de longueur d'onde
     inf_ = float(inf)
@@ -64,6 +68,10 @@ plt.legend()
 plt.xlabel("Longueur d'onde (λ)")
 plt.ylabel("Intensité (I)")
 plt.title("Graphique représentant l'intensité en fonction de la longueur d'onde")
+
+with open("temp.txt","w") as temp :
+    for i in range(0,len(intensite)) :
+        temp.write("{}\t{}\n".format(longueur[i],intensite[i]))
 
 if len(longueurf)>0: #On verifie que les listes sont remplies avant de plot
     if sys.argv[3] == 'y':
