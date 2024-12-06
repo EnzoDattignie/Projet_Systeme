@@ -5,7 +5,7 @@ echo "Voulez vous sauvegarder les données à la fin de l'exécution ? (y/n)"
 read s1
 if [ $r1 == "y" ]
 then 
-    python3 'intensite.py' $@ | python3 'recherche_plot.py' 'a' 'a' $s1
+    python3 'intensite.py' $@ | python3 'recherche_plot.py' 'null' 'null' $s1
 else
     echo "Veuiller indiquer la longueur d'onde minimale de la fenetre"
     read t1
