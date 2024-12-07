@@ -16,7 +16,7 @@ Our program is designed to process output files from spectrometers, where each l
 ## Programm Structure  
 This program consists of 4 main files: 
 1. projet.sh : A Bash script that collects inputs from user including the filepath, the window size and the wavelength range to plot. 
-2. function.py : A Python scrpit containing useful functions (e.g., for finding minimum an maximum values) used by other scripts.
+2. function.py : A Python scrpit containing useful functions (e.g., for finding minimum and maximum values) used by other scripts.
 3. intensite.py : Reads the data from the input file, assigns each intensity value to a corresponding wavelength window (centered on the sepecified precision).
 4. recherche.plot : Processes the data receives through stdin, generates the results, and plot the graph within the specified wavelength range.
 
