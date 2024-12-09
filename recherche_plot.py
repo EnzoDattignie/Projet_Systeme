@@ -33,7 +33,6 @@ else:          #Lecture des données depuis temp.txt
     with open("temp.txt","r") as temp:
         for l in temp :
             line = l.split()
-            print(line)
             longueur.append(float(line[0]))
             intensite.append(float(line[1]))     
 
@@ -47,7 +46,7 @@ if is_number(inf) and is_number(sup): #Si ce sont des nombres on les converti en
     if sup_<inf_:          #inversion de sup et inf si sup<inf
         sup_,inf_=inf_,sup_
 else:
-    print('Les valeurs rentrées ne sont pas correctes ou inexistantes, plot sur toute la longueur de l\'echantillon')
+    print('Valeurs non renseignées sur les bornes, plot sur toute la longueur de l\'echantillon')
     if (len(longueur) > 0) : #Evite juste une erreur si l'échantillon est vide
         inf_ = longueur[minimum(longueur)]
         sup_ = longueur[maximum(longueur)]

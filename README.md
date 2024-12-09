@@ -1,5 +1,5 @@
 # Projet_Systeme
-This programm was developped for the HAI727I module at the Faculty of Science, University of Montpellier.
+This program was developped for the HAI727I module at the Faculty of Science, University of Montpellier.
 
 To install this program, simply clone the Git repository into the directory of your choice and ensure that your Python installation includes the following libraries : sys, os, re, matplotlib, datetime.
 
@@ -18,7 +18,7 @@ This program consists of 4 main files:
 1. projet.sh : A Bash script that collects inputs from user including the filepath, the window size and the wavelength range to plot. 
 2. function.py : A Python scrpit containing useful functions (e.g., for finding minimum and maximum values) used by other scripts.
 3. intensite.py : Reads the data from the input file, assigns each intensity value to a corresponding wavelength window (centered on the sepecified precision).
-4. recherche.plot : Processes the data receives through stdin, generates the results, and plot the graph within the specified wavelength range.
+4. recherche_plot.py : Processes the data receives through stdin, generates the results, and plot the graph within the specified wavelength range.
 
 ## Design Choice
 - We created an additionnal script, fonction.py, to keep the project organized by storing each fonctions in a separate file.
