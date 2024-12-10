@@ -3,7 +3,7 @@ import re
 
 dict = {}
 
-#Fonction retournant True si le string donné peut etre converti en float
+#Function returning true if the string can be converted into a float
 def is_number(s):
     flag = False
     res = re.search("(^[-]{0,1}[0-9]*[.]{0,1}[0-9]+$)",s)
@@ -15,7 +15,7 @@ def is_number(s):
     return flag
 
 
-#Programme retournant l'index de la valeur minimale d'une liste
+#Functions giving respectively the index of the minimal and maximal value from a list
 def minimum(l) :
     res = l[0]
     index = 0
@@ -34,14 +34,14 @@ def maximum(l) :
             index = i
     return index
 
-#Programme retournant la moyenne d'une liste
+#Returns the average of a list
 def average(l):
     res = 0
     for elmt in l :
         res = res + elmt
     return (res/len(l))
 
-#Fonction dont le but est de trier une liste comme demandé dans les consignes pour les intensités
+#Function sorting a list
 def sort_list(list) :
     l = list
     res = []
@@ -51,44 +51,45 @@ def sort_list(list) :
         del l[index_min]
     return res
 
-#Programme vérifiant que le chemin fourni mene bien a un fichier existant qui prend en compte tout type de chemin
+#Function verifying that a given path is a pointing to an existing file
 def file_here(path):
     presence = False
-    if (path[0] == "/" or path[0] == "." or path[0] == "~"):#On est face a un chemin absolu ou relatif
+    if (path[0] == "/" or path[0] == "." or path[0] == "~"):#We have an absolute or relative path
         path = path.split("/")
         file = path[len(path)-1]
         dir = ""
         for i in range (0, len(path)-1):
             dir = dir+path[i]+"/"
         fichiers = os.listdir(dir)
-    else : #On est dans le cas d'un nom de fichier
+    else : #We just have a filename
         fichiers = os.listdir("./")
         file = path
-    for f in fichiers : #vérification que le fichier existe bien a l'endroit indiqué
+    for f in fichiers : #Check that the givenfile exists
         if (f == file) :
             presence = True
     return presence,file
 
-def dict_creation (path,fenetre):
+#Function creating a full dictionnary from a text file and a window
+def dict_creation (path,window):
     dict = {}
     presence = file_here(path)
     if presence[0] == False :
-        print("Aucun fichier nommé \"{}\" trouvé".format(presence[1]))
+        print("No file named \"{}\" found".format(presence[1]))
     else :
         fd = open(path,"r")
-        for ligne in fd :
-            x = ligne.strip().split()
-            #On vérifie bien que deux nombres sont fournis et que les deux sont des nombres
+        for line in fd :
+            x = line.strip().split()
+            #We check that two strings are given and that they are numbers
             if (len(x) == 2 and is_number(x[0]) and is_number(x[1])):
-                longueur = float(x[0])
-                intensite = float(x[1])
-                #On sélectionne comme clef le milieu de la fenetre en mettant dans la meme clef du dictionnaire toutes les longueurs pour lesquelles la division entiere est égale
-                #on prend ensuite ce résultat qu'on multiplie par la fenetre et on rajoute une demie fenetre pour que la  clef représente bien le centre de notre fenetre
-                key = ((longueur//fenetre)+0.5)*fenetre
+                wavelength = float(x[0])
+                intensity = float(x[1])
+                #We use as a key the middle of the window, we determine the key by making an integer division of the wavelength by the window
+                #we then take this result that we multiply by the window and add half a window so the key actually represent the middle of each window
+                key = ((wavelength//window)+0.5)*window
                 if key in dict.keys() :
-                    dict[key].append(intensite)
+                    dict[key].append(intensity)
                 else :
-                    dict[key] = [intensite]
+                    dict[key] = [intensity]
         fd.close()
     return dict
 
@@ -96,34 +97,34 @@ def is_corrupted(path,fichier):
     result= False
     presence = file_here(path)
     if presence[0]== False :
-        print("Aucun fichier nommé \"{}\" trouvé".format(presence[1]))
+        print("No file named \"{}\" found".format(presence[1]))
         result = True        
     else :
         with open(fichier,'r') as fd:
-            lignes=fd.readlines()
-            if len(lignes)==0:    #Si le fichier n'est pas vide
-                print("Le fichier est vide")
+            lines=fd.readlines()
+            if len(lines)==0:    #If the file is empty
+                print("The file is empty")
                 result= True
             else:
-                taille_col1=0
-                taille_col2=0
-                for ligne in lignes:
-                    valeurs=ligne.strip().split()
-                    if len(valeurs)>=2:
-                        if len(valeurs)!=2 and (is_number(valeurs[0]) and is_number(valeurs[1])):
-                            print("Les données doivent être rangées dans 2 colonnes distincts sur une même ligne ")
+                length_col1=0
+                length_col2=0
+                for line in lines:
+                    values=line.strip().split()
+                    if len(values)>=2:
+                        if len(values)!=2 and (is_number(values[0]) and is_number(values[1])):
+                            print("Data must be stored in two distinct columns on a same line")
                             result=True
                             break    
-                        if len(valeurs)==2 and (not(is_number(valeurs[0])) and is_number(valeurs[1])) or (is_number(valeurs[0]) and not(is_number(valeurs[1]))): # Si une des deux données n'est pas un nombre
+                        if len(values)==2 and (not(is_number(values[0])) and is_number(values[1])) or (is_number(values[0]) and not(is_number(values[1]))): #If only one of the two value is not a number
                             result=True
                             break
-                        if is_number(valeurs[0]) and is_number(valeurs[1]):  #On verifie que les deux premières valeurs sont bien des nombres
-                            taille_col1+=1               #On compte tout les données de la première colonne
-                            taille_col2+=1               #Puis de la deuxième  
+                        if is_number(values[0]) and is_number(values[1]):  #We check that the two values are number
+                            length_col1+=1               #We count all values from both columns
+                            length_col2+=1               
                     else:
-                        if len(valeurs)==1:
-                            if is_number(valeurs[0]):    #On ajoute quand même si il n'y a qu'une donnée (une colonne)
-                                taille_col1+=1
-                    if taille_col1!=taille_col2:     #Si les 2 listes de données n'ont pas la même taille, 
-                            result=True                  #le fichier est corrumpu       
+                        if len(values)==1:
+                            if is_number(values[0]):    #we add even if there is only one value
+                                length_col1+=1
+                    if length_col1!=length_col2:     #If both columns have different length the file is corrupt
+                            result=True                    
     return result
