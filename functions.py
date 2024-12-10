@@ -91,3 +91,39 @@ def dict_creation (path,fenetre):
                     dict[key] = [intensite]
         fd.close()
     return dict
+
+def is_corrupted(path,fichier):
+    result= False
+    presence = file_here(path)
+    if presence[0]== False :
+        print("Aucun fichier nommé \"{}\" trouvé".format(presence[1]))
+        result = True        
+    else :
+        with open(fichier,'r') as fd:
+            lignes=fd.readlines()
+            if len(lignes)==0:    #Si le fichier n'est pas vide
+                print("Le fichier est vide")
+                result= True
+            else:
+                taille_col1=0
+                taille_col2=0
+                for ligne in lignes:
+                    valeurs=ligne.strip().split()
+                    if len(valeurs)>=2:
+                        if len(valeurs)!=2 and (is_number(valeurs[0]) and is_number(valeurs[1])):
+                            print("Les données doivent être rangées dans 2 colonnes distincts sur une même ligne ")
+                            result=True
+                            break    
+                        if len(valeurs)==2 and (not(is_number(valeurs[0])) and is_number(valeurs[1])) or (is_number(valeurs[0]) and not(is_number(valeurs[1]))): # Si une des deux données n'est pas un nombre
+                            result=True
+                            break
+                        if is_number(valeurs[0]) and is_number(valeurs[1]):  #On verifie que les deux premières valeurs sont bien des nombres
+                            taille_col1+=1               #On compte tout les données de la première colonne
+                            taille_col2+=1               #Puis de la deuxième  
+                    else:
+                        if len(valeurs)==1:
+                            if is_number(valeurs[0]):    #On ajoute quand même si il n'y a qu'une donnée (une colonne)
+                                taille_col1+=1
+                    if taille_col1!=taille_col2:     #Si les 2 listes de données n'ont pas la même taille, 
+                            result=True                  #le fichier est corrumpu       
+    return result
