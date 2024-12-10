@@ -25,8 +25,7 @@ if flag:      #Lecture des données depuis stdin
                     longueur.append(float(l[2].strip('"')))
                 if l[0] == 'Moyenne':
                     intensite.append(float(l[2].strip()))
-                    print('\n')
-
+                    print('---------------------------------------') #Ligne de séparation purement visuelle, inspiration du projet de José Felix et Alban Dessouter
 else:          #Lecture des données depuis temp.txt
     with open("temp.txt","r") as temp:
         for l in temp :

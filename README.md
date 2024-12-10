@@ -1,7 +1,7 @@
 # Projet_Systeme
 This program was developped for the HAI727I module at the Faculty of Science, University of Montpellier.
 
-To install this program, simply clone the Git repository into the directory of your choice and ensure that your Python installation includes the following libraries : sys, os, re, matplotlib, datetime.
+To install this program, simply clone the Git repository into the directory of your choice and ensure that your Python installation includes the following libraries : sys, os, re, matplotlib, datetime and select.
 
 When running this program for the first time, open the command prompt in the appropriate directory and execute the following command:  
 chmod 555 ./projet.sh     
