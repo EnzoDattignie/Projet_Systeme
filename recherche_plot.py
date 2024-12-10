@@ -1,4 +1,3 @@
-from queue import Full
 import sys
 from functions import *
 import matplotlib.pyplot as plt
@@ -17,7 +16,6 @@ if flag:      #Lecture des données depuis stdin
     if len(stdin_data) == 0:
         print("Le fichier est corrumpu")
         sys.exit(1)
-    
     if sys.argv[4] == "n" :
         for line in stdin_data : #Nous lisons le stdin ligne par ligne pour récuperer les données pipe par intensite.py
             l = line.split()
@@ -71,8 +69,6 @@ else :
 intensitef_normalisé=[]
 for i in range(len(intensitef)):
     intensitef_normalisé.append(intensitef[i]/Imax)
-
-filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 plt.plot(longueurf,intensitef_normalisé,label='I(λ)',color='red')
 plt.ylim(-0.10,1.10)
 plt.legend()
@@ -85,7 +81,7 @@ with open("temp.txt","w") as temp :
         temp.write("{}\t{}\n".format(longueur[i],intensite[i]))
 
 if len(longueurf)>0: #On verifie que les listes sont remplies avant de plot
-    if sys.argv[3] == 'y':
+    if sys.argv[3] == 'y': #Si l'utilisateur veut sauvegarder on génére un texte et une image avec un nom de fichier comportant la date et l'heure
         filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         with open(filename+"_save.txt",'w') as save :
             for i in range (0,len(intensitef_normalisé)) :
