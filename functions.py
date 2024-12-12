@@ -1,8 +1,6 @@
 import sys, os
 import re
 
-dict = {}
-
 #Function returning true if the string can be converted into a float
 def is_number(s):
     flag = False

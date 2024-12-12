@@ -1,5 +1,6 @@
 import sys
 from functions import *
+
 dict = {}
 
 if not(is_corrupted(sys.argv[0],sys.argv[0])):
