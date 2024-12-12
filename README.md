@@ -23,4 +23,4 @@ This program consists of 4 main files:
 ## Design Choice
 - We created an additionnal script, fonction.py, to keep the project organized by storing each fonctions in a separate file.
 - Instead of generating an external text file, we opted to use the stdin to pipe data between scrpits. This decision simplifies danta handling but required centralising user inputs in the Bash script (projet.sh).
-- We normalized the graph so that its maximum value is equal to one, ensuring consistent visual representation. This approach allows us to easily compare multiple graphs, even from different spectrometers, as intensity is rarely measured in SI units and typically depends on experimental conditions.
+- We normalized the graph by adjusting its maximum value to one, ensuring consistent visual representation across different datasets. This approach allows us to easily compare multiple graphs, even from different spectrometers, as intensity is rarely measured in SI units and typically depends on experimental conditions.
