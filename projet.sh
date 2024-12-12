@@ -29,4 +29,7 @@ do
         flag=False
     fi
 done
-rm ./temp.txt #Removes the file created by recherche_plot.py
+if [ -f "temp.txt" ];  #Checks if a temporary file exists in the directory
+then 
+    rm ./temp.txt #Removes the file created by recherche_plot.py
+fi
