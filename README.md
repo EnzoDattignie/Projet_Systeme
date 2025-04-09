@@ -1,4 +1,3 @@
-Test
 # Projet_Systeme
 This program was developped for the HAI727I module at the Faculty of Science, University of Montpellier.
 
